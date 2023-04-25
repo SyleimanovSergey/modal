@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 type P = {
     isOpen: boolean
     setIsOpen: Dispatch<SetStateAction<boolean>>
-    onConfirm: Function
+    onConfirm: () => void
 }
 export const ModalRequest: React.FC<P> = (props) => {
     const {isOpen, setIsOpen, onConfirm} = props;

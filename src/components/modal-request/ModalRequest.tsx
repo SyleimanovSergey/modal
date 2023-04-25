@@ -13,11 +13,12 @@ export const ModalRequest: React.FC<P> = (props) => {
     const [countdown, setCountdown] = useState(5);
 
     const onCloseModal = useCallback(() => setIsOpen(false), []);
+    const isConfirm = useMemo(() => countdown > 0, [countdown])
 
     useEffect(() => {
         let intervalId: ReturnType<typeof setInterval>;
 
-        if (isOpen && countdown > 0) {
+        if (isOpen && isConfirm) {
             intervalId = setInterval(() => {
                 setCountdown(countdown - 1);
             }, 1000);
@@ -36,7 +37,6 @@ export const ModalRequest: React.FC<P> = (props) => {
         setCountdown(5);
     }, [onCloseModal]);
 
-    const isConfirm = useMemo(() => countdown > 0, [countdown])
 
     return (
         <Modal
